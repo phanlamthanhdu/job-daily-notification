@@ -6,19 +6,20 @@ on:
         description: 'Appname'
         required: true
         type: string
-      db_connection:
-        description: 'DB_connection'
-        required: true
-        type: string
-      environment:
-        description: 'Environment'
-        type: environment
-        required: true
+      # db_connection:
+      #   description: 'DB_connection'
+      #   required: true
+      #   type: string
+      # environment:
+      #   description: 'Environment'
+      #   type: environment
+      #   required: true
 
 jobs:
-  print-tag:
+  build_app:
     runs-on: ubuntu-latest
-    if: ${{ inputs.print_tags }} 
-    steps:
-      - name: Print the input tag to STDOUT
-        run: echo  The tags are ${{ inputs.tags }} 
+
+    steps: 
+      - name: Build Dotnet
+        run: dotnet build -c Release
+    
