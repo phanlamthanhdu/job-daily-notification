@@ -5,14 +5,13 @@ on:
       appname:
         description: 'Appname'
         required: true
-        default: 'warning'
         type: string
       db_connection:
         description: 'DB_connection'
         required: true
         type: string
       environment:
-        description: 'Environment to run tests against'
+        description: 'Environment'
         type: environment
         required: true
 
