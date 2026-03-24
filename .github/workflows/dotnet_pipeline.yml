@@ -28,6 +28,7 @@ jobs:
           path: ./publish_output
 
   deploy_app:
+    needs: build_app
     runs-on: ubuntu-latest
 
     steps:
