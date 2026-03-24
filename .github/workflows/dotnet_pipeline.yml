@@ -21,5 +21,7 @@ jobs:
 
     steps: 
       - name: Build Dotnet
-        run: dotnet build -c Release --verbosity quiet
+        run: |
+          pwd
+          dotnet build -c Release --verbosity quiet
     
