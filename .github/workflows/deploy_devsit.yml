@@ -33,7 +33,7 @@ jobs:
 
       - name: Show output
         run: |
-          ls ./output -r
+          ls -R
 
       - name: Replace fields
         uses: cschleiden/replace-tokens@v1

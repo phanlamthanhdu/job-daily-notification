@@ -31,7 +31,7 @@ jobs:
           echo "artifact_name=$ATF_NAME" >> $GITHUB_OUTPUT # Pass value to $GITHUB_OUTPUT
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: ${{ steps.define_artifact.outputs.artifact_name }}
           path: ./publish_output
