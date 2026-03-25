@@ -29,7 +29,7 @@ jobs:
         with:
           workflow: build.yml
           name: ${{ inputs.artifact_name }}
-          path: publish_output
+          # path: publish_output
 
       - name: Show output
         run: |
@@ -38,11 +38,11 @@ jobs:
       - name: Replace fields
         uses: cschleiden/replace-tokens@v1
         with:
-          files: '["./publish_output/appsettings.json"]'
+          files: '["appsettings.json"]'
         env:
           APP_NAME: ${{ inputs.appname }}
           ENV: ${{ inputs.env }}
           DB_CONNECTION: ${{ inputs.db_connection }}
 
       - name: Show file
-        run: cat ./publish_output/appsettings.json
+        run: cat appsettings.json
