@@ -27,7 +27,7 @@ jobs:
       - name: Define artifact
         id: define_artifact
         run: |
-          ATF_NAME="dotnet-artifact"
+          ATF_NAME="Dotnet-artifact"
           echo "artifact_name=$ATF_NAME" >> $GITHUB_OUTPUT # Pass value to $GITHUB_OUTPUT
 
       - name: Upload artifact
