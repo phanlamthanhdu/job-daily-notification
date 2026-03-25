@@ -29,7 +29,8 @@ jobs:
         with:
           workflow: build.yml
           name: ${{ inputs.artifact_name }}
-          # path: publish_output
+          path: publish_output
+          if_no_artifact_found: fail
 
       - name: Show output
         run: |
