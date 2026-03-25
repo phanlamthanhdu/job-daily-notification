@@ -49,7 +49,7 @@ jobs:
             env: dev_env2
             db_connection: dev_db2
 
-    uses: ./.github/workflows/deploy.yml
+    uses: ./.github/workflows/deploy_devsit.yml
     with:
       appname: ${{ matrix.appname }}
       env: ${{ matrix.env }}
@@ -68,7 +68,7 @@ jobs:
             env: sit_env2
             db_connection: sit_db2
 
-    uses: ./.github/workflows/deploy.yml
+    uses: ./.github/workflows/deploy_devsit.yml
     with:
       appname: ${{ matrix.appname }}
       env: ${{ matrix.env }}
