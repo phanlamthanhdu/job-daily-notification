@@ -38,11 +38,11 @@ jobs:
       - name: Replace fields
         uses: cschleiden/replace-tokens@v1
         with:
-          files: '["./output/appsettings.json"]'
+          files: '["./publish_output/appsettings.json"]'
         env:
           APP_NAME: ${{ inputs.appname }}
           ENV: ${{ inputs.env }}
           DB_CONNECTION: ${{ inputs.db_connection }}
 
       - name: Show file
-        run: cat ./output/appsettings.json
+        run: cat ./publish_output/appsettings.json
