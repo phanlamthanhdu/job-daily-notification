@@ -51,9 +51,9 @@ jobs:
 
     uses: ./.github/workflows/deploy.yml
     with:
-      appname: ${{ inputs.appname }}
-      env: ${{ inputs.env }}
-      db_connection: ${{ inputs.db_connection }}
+      appname: ${{ matrix.appname }}
+      env: ${{ matrix.env }}
+      db_connection: ${{ maxtrix.db_connection }}
       artifact_name: ${{ needs.build_app.outputs.artifact_name }}
 
   pass_sit_inputs:
@@ -70,7 +70,7 @@ jobs:
 
     uses: ./.github/workflows/deploy.yml
     with:
-      appname: ${{ inputs.appname }}
-      env: ${{ inputs.env }}
-      db_connection: ${{ inputs.db_connection }}
+      appname: ${{ matrix.appname }}
+      env: ${{ matrix.env }}
+      db_connection: ${{ maxtrix.db_connection }}
       artifact_name: ${{ needs.build_app.outputs.artifact_name }}

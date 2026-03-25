@@ -20,7 +20,7 @@ on:
         type: string
       
 jobs:
-  deploy_dev:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -45,31 +45,3 @@ jobs:
 
       - name: Show file
         run: cat ./output/appsettings.json
-
-  deploy_sit:
-    needs: deploy_dev
-    runs-on: ubuntu-lastest
-
-    steps:
-      - name: Download artifact from another workflow
-        uses: dawidd6/action-download-artifact@v6
-        with:
-          workflow: build.yml
-          name: ${{ inputs.artifact_name }}
-          path: ./output
-
-      - name: Show output
-        run: ls ./output
-
-      - name: Replace fields
-        uses: cschleiden/replace-tokens@v1
-        with:
-          files: '["./output/appsettings.json"]'
-        env:
-          APP_NAME: ${{ inputs.appname }}
-          ENV: ${{ inputs.env }}
-          DB_CONNECTION: ${{ inputs.db_connection }}
-
-      - name: Show file
-        run: cat ./output/appsettings.json
-
