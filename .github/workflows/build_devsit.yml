@@ -55,7 +55,7 @@ jobs:
 
   pass_inputs:
     needs: build_app
-    uses: ./.github/workflows/deploy.yml
+    uses: ./.github/workflows/deploy_devsit.yml
     with:
       appname: ${{ inputs.appname }}
       env: ${{ inputs.env }}
