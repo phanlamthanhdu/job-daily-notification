@@ -14,15 +14,12 @@ on:
         description: 'Enter the database connection'
         required: True
         type: string
-      artifact_name:
-        description: 'Enter the artifact name'
-        default: 'Dotnet artifact'
-        required: True
-        type: string
 
 jobs:
   build_app:
     runs-on: ubuntu-latest
+    outputs:
+      artifact_name: ${{ steps.define_artifact.outputs.artifact_name }}
 
     steps:  
       - name: Checkout Code 
@@ -44,10 +41,14 @@ jobs:
           pwd
           ls ./.github/workflows
 
+      - name: Define artifact
+        id: define_artifact
+        run: echo "artifact_name=Dotnet artifact" >> $GITHUB_OUTPUT
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ inputs.artifact_name }}
+          name: ${{ steps.define_artifact.outputs.artifact_name }}
           path: ./publish_output
 
   pass_inputs:
@@ -57,4 +58,4 @@ jobs:
       appname: ${{ inputs.appname }}
       env: ${{ inputs.env }}
       db_connection: ${{ inputs.db_connection }}
-      artifact_name: ${{ inputs.artifact_name }}
+      artifact_name: ${{ needs.build_app.outputs.artifact_name }}
