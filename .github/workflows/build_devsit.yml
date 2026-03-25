@@ -1,23 +1,25 @@
-name: Build Dotnet
+name: Build Devsit
 on:
   workflow_dispatch:
-    inputs:
-      appname:
-        description: 'Enter the appname'
-        required: True
-        type: string
-      env:
-        description: 'Enter the environment'
-        required: True
-        type: string
-      db_connection:
-        description: 'Enter the database connection'
-        required: True
-        type: string
 
 jobs:
   build_app:
     runs-on: ubuntu-latest
+    matrix:
+      include:
+        - appname: dev1
+          env: dev1_env
+          db_connection: dev1_db
+        - appname: dev2
+          env: dev2_env
+          db_connection: dev2_db
+        - appname: sit1
+          env: sit1_env
+          db_connection: sit1_db
+        - appname: sit2
+          env: sit2_env
+          db_connection: sit2_db
+
     outputs:
       artifact_name: ${{ steps.define_artifact.outputs.artifact_name }}
 
