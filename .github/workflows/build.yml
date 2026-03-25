@@ -47,7 +47,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ inputs.artifact_names }}
+          name: ${{ inputs.artifact_name }}
           path: ./publish_output
 
   pass_inputs:
@@ -57,4 +57,4 @@ jobs:
       appname: ${{ inputs.appname }}
       env: ${{ inputs.env }}
       db_connection: ${{ inputs.db_connection }}
-      artifact_name: ${{ inputs.artifact_names }}
+      artifact_name: ${{ inputs.artifact_name }}
