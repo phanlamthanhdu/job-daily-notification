@@ -25,12 +25,11 @@ jobs:
 
     steps:
       - name: Download artifact from another workflow
-        uses: dawidd6/action-download-artifact@v6
+        uses: actions/download-artifact@v4
         with:
-          workflow: build.yml
+          # workflow: build.yml
           name: ${{ inputs.artifact_name }}
           path: publish_output
-          if_no_artifact_found: fail
 
       - name: Show output
         run: |
