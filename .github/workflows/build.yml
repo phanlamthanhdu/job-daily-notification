@@ -37,8 +37,7 @@ jobs:
       - name: Test command
         run: |
           pwd
-          ls /home/runner/work/job-daily-notification
-          ls 
+          ls -a
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
