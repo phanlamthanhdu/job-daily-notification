@@ -37,7 +37,7 @@ jobs:
       - name: Test command
         run: |
           pwd
-          ls -a
+          ls ./.github
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
