@@ -24,6 +24,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Check vars
+        run: echo ${{ inputs.artifact_name }}
+
       - name: Download artifact from another workflow
         uses: dawidd6/action-download-artifact@v6
         with:
