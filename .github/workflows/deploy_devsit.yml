@@ -1,4 +1,4 @@
-name: Deploy Server
+name: Deploy Devsit
 on:
   workflow_call:
     inputs:
