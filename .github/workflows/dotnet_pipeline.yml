@@ -1,13 +1,13 @@
 name: Dotnet Pipeline
 on:
-  # workflow_dispatch: # Manually run workflow
-  workflow_call:
-    inputs:
-      username:
-        description: 'A username passed from the caller workflow'
-        default: 'john-doe'
-        required: false
-        type: string
+  workflow_dispatch: # Manually run workflow
+  # workflow_call:
+  #   inputs:
+  #     username:
+  #       description: 'A username passed from the caller workflow'
+  #       default: 'john-doe'
+  #       required: false
+  #       type: string
 
 jobs:
   build_app:
