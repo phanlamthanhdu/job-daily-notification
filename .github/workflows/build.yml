@@ -45,9 +45,10 @@ jobs:
           name: Dotnet artifact
           path: ./publish_output
 
-      - name: Pass inputs
-        uses: ./.github/workflows/deploy.yml
-        with:
-          appname: ${{ inputs.appname }}
-          env: ${{ inputs.env }}
-          db_connection: ${{ inputs.db_connection }}
+  pass_inputs:
+    needs: build_app
+    uses: ./.github/workflows/deploy.yml
+    with:
+      appname: ${{ inputs.appname }}
+      env: ${{ inputs.env }}
+      db_connection: ${{ inputs.db_connection }}
