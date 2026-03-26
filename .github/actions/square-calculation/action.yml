@@ -1,0 +1,21 @@
+name: 'Squared Number'
+description: 'Calculate the square of a number'
+inputs:
+  number:
+    description: 'A number being squared'
+    required: True
+outputs:
+  squared-number:
+    description: 'A squared number'
+    value: ${{ steps.calculation.outputs.result }}
+runs:
+  using: 'composite'
+  steps:
+    name: Calculation
+    id: calculation
+    run: |
+      ANS=$(( ${{inputs.number}} * ${{inputs.number}} ))
+      echo "result=$ANS" >> $GITHUB_OUTPUT
+    shell: bash
+
+

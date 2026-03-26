@@ -1,0 +1,24 @@
+name: Calculation
+on:
+  workflow_dispatch:
+    inputs:
+      number:
+        description: 'Enter a number to calculate square'
+        required: True
+        type: number
+        default: 2
+jobs:
+  square_calculation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      
+      - name: Calculation the square
+        id: square
+        uses: ./.github/actions/square-tool
+        with:
+          number: ${{ inputs.number }}
+
+      - name: Hiển thị kết quả
+        run: echo "Kết quả nhận được là ${{ steps.square.outputs.squared-number }}"
