@@ -9,4 +9,4 @@ jobs:
     environment: env_b
     
     steps:
-      run: echo "${{ vars.VAR1 }}"
+      - run: echo "${{ vars.VAR1 }}"
