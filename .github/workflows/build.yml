@@ -66,4 +66,4 @@ jobs:
     runs-on: ubuntu-latest
     environment: ENV_A
     steps:
-      run: echo "${{ vars.VAR1 }}"
+      run: echo "${{ secrets.SEC1 }}"
