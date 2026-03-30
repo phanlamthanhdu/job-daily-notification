@@ -12,6 +12,8 @@ jobs:
       - name: Token Replacement
         uses: cschleiden/replace-tokens@v1
         with:
+          files: '["./main.tf"]'
+        env:
           ATF_NAME: Token Replaced 
 
       - name: Show file
