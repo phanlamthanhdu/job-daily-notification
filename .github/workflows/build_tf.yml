@@ -1,0 +1,18 @@
+name: Terraform Replacement
+on: 
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-lastest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Token Replacement
+        uses: cschleiden/replace-tokens@v1
+        with:
+          ATF_NAME: Token Replaced 
+
+      - name: Show file
+        run: cat ./main.tf

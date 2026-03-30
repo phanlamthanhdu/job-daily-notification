@@ -18,4 +18,3 @@ runs:
         echo "result=$ANS" >> $GITHUB_OUTPUT
       shell: bash
 
-
