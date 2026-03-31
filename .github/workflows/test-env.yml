@@ -6,7 +6,13 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    environment: env_a
+
+    strategy:
+      matrix:
+        envs: [E1, E2, E3]
+      max-parallel: 1
+
+    environment: ${{ matrix.envs }}
     
     steps:
-      - run: echo "${{ vars.VAR1 }}"
+      - run: echo "This is the environment ${{ matrix.envs }}"
