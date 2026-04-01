@@ -10,7 +10,6 @@ jobs:
     strategy:
       matrix:
         envs: [E1, E2, E3]
-      max-parallel: 1
 
     concurrency:
       group: deploy-envs
