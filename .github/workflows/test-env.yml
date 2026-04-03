@@ -5,6 +5,7 @@ on:
 
 jobs:
   test:
+    environment: BUILD_ENV
     uses: ./.github/workflows/call_env.yml
     with:
-      appname: An appname
+      appname: ${{ vars.APP_NAME }}
