@@ -13,9 +13,11 @@ jobs:
 
   sit: 
     <<: *template
+    needs: dev
     environment: E2
 
   prod: 
     <<: *template
+    needs: dev
     environment: E3
 
