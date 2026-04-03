@@ -4,8 +4,18 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
+  dev: &template 
     runs-on: ubuntu-latest
-    uses: ./.github/workflows/call_env.yml
-    with:
-      appname: An APPNAME
+    environment: E1
+
+    steps:
+      - run: echo ${{ vars.V1 }}
+
+  sit: 
+    <<: *template
+    environment: E2
+
+  prod: 
+    <<: *template
+    environment: E3
+
