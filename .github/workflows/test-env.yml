@@ -6,7 +6,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    environment: BUILD_ENV
     uses: ./.github/workflows/call_env.yml
     with:
-      var1: vars.APPNAME
+      var1: "a"
