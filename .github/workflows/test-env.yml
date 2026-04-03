@@ -6,17 +6,8 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        envs: [E1, E2, E3]
-      max-parallel: 1
-
-    concurrency:
-      group: deploy-envs
-      cancel-in-progress: true
-
-    environment: ${{ matrix.envs }}
     
     steps:
-      - run: echo "This is the environment ${{ matrix.envs }}"
+      - run: |
+          echo ${{ secrets.TS1 }}
+          echo ${{ vars.TV1 }}
