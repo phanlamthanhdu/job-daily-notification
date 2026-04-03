@@ -3,21 +3,23 @@ name: Test environment
 on:
   workflow_dispatch:
 
+# 1. Define the template outside of the 'jobs' hierarchy
+x-template: &job_definition
+  runs-on: ubuntu-latest
+  steps:
+    - run: echo "Value is ${{ vars.V1 }}"
+
 jobs:
-  dev: &template 
-    runs-on: ubuntu-latest
+  dev:
+    <<: *job_definition
     environment: E1
 
-    steps:
-      - run: echo ${{ vars.V1 }}
-
-  sit: 
-    <<: *template
+  sit:
+    <<: *job_definition
     needs: dev
     environment: E2
 
-  prod: 
-    <<: *template
-    needs: dev
+  prod:
+    <<: *job_definition
+    needs: sit # Changed to 'sit' to create a logical chain
     environment: E3
-
