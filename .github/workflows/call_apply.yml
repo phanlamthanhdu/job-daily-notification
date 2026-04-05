@@ -3,7 +3,7 @@ name: Call environment
 on:
   workflow_call:
     inputs:
-      appname:
+      workspace:
         type: string
         required: true
     secrets:

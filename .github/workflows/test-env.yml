@@ -4,20 +4,24 @@ on:
   workflow_dispatch:
 
 jobs:
-  dev:
-    uses: ./.github/workflows/call_apply.yml
-    with: 
-      appname: A
-    secrets: &secrets_template
-      env_vars: |
-        SEC1=A
-        SEC2=B
+  build-infra:
+    name: "Test"
 
-  sit:
+    strategy:
+      matrix:
+        include:
+          - workspace: dev
+            tf_config: tf_dev
+          - workspace: sit
+            tf_config: tf_sit
+          - workspace: uat
+            tf_config: tf_uat
+          - workspace: prod
+            tf_config: tf_prod
+
     uses: ./.github/workflows/call_apply.yml
     with: 
-      appname: ${{ matrix.call_actions }}
-    secrets: 
-      <<: *secrets_template
+      appname: ${{ matrix.workspace }}
+    secrets:
       env_vars: |
-        SEC1=C
+        TF_CONFIG=${{matrix.tf_config}}
