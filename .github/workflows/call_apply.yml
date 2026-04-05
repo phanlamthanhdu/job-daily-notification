@@ -14,4 +14,4 @@ jobs:
   show_env:
     runs-on: ubuntu-latest
     steps:
-      - run: echo B
+      - run: echo "${{inputs.workspace}} : ${{secrets.env_vars}}"
