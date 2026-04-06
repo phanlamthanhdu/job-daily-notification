@@ -16,19 +16,19 @@ jobs:
           import json
           import os
 
-          matrix = []
+          prepare_matrix = []
 
           envs = ["dev", "sit", "prod"]
           tf_vars = ["TF_NONPROD_DEV", "TF_NONPROD_SIT", "TF_PROD_PROD"]
 
           for e,v in zip(envs,tf_vars):
-            matrix.append({
+            prepare_matrix.append({
               "workspace": e,
               "tf_config": v
             })
 
           with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
-              f.write(f"matrix={json.dumps(config)}\n")
+              f.write(f"matrix={json.dumps(prepare_matrix)}\n")
 
   build-infra:
     needs: prepare
