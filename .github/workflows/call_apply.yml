@@ -17,4 +17,4 @@ jobs:
     steps:
       - run: |
           echo ${{ vars[inputs.tf_var] }}
-          echo ${{ inputs.workspace == 'dev' && "This is true" || "This is false" }}
+          echo ${{ inputs.workspace == 'dev' && 'This is true' || 'This is false' }}
