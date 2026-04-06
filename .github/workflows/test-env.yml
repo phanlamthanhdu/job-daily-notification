@@ -16,7 +16,7 @@ jobs:
     steps:
       - id: get_tf_var
         run: |
-          echo "tf_var=${{vars.VAR1}}" >> $GITHUB_OUTPUT
+          echo "tf_var=${{vars.V1}}" >> $GITHUB_OUTPUT
 
   # build-infra:
 
