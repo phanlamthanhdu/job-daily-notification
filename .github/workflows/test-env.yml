@@ -7,34 +7,30 @@ jobs:
   get_vars:
     runs-on: ubuntu-latest
     outputs: 
-      tf_var: ${{steps.get_tf_var.outputs.tf_var}}
+      env_name: ${{steps.get_var.outputs.env_name}}
+      tf_var: ${{steps.get_var.outputs.tf_var}}
     strategy:
       matrix:
         envs: [E1,E2,E3]
     environment: ${{matrix.envs}}
       
     steps:
-      - id: get_tf_var
+      - id: get_var
         run: |
+          echo "env_name=${{matrix.envs}}" >> $GITHUB_OUTPUT
           echo "tf_var=${{vars.V1}}" >> $GITHUB_OUTPUT
 
-  # build-infra:
+  build-infra:
+    needs: get_vars
+    strategy:
+      matrix:
+        include:
+          - workspace: needs.get_vars.outputs.env_name
+            tf_config: needs.get_vars.outputs.tf_var
 
-  #   strategy:
-  #     matrix:
-  #       include:
-  #         - workspace: dev
-  #           tf_config: tf_dev
-  #         - workspace: sit
-  #           tf_config: tf_sit
-  #         - workspace: uat
-  #           tf_config: tf_uat
-  #         - workspace: prod
-  #           tf_config: tf_prod
-
-  #   uses: ./.github/workflows/call_apply.yml
-  #   with: 
-  #     workspace: ${{ matrix.workspace }}
-  #   secrets:
-  #     env_vars: |
-  #       TF_CONFIG=${{matrix.tf_config}}
+    uses: ./.github/workflows/call_apply.yml
+    with: 
+      workspace: ${{ matrix.workspace }}
+    secrets:
+      env_vars: |
+        TF_CONFIG=${{matrix.tf_config}}
