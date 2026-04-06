@@ -34,7 +34,7 @@ jobs:
     needs: prepare
     strategy:
       matrix:
-        include: ${{needs.prepare.outputs.matrix}}
+        include: ${{ fromJSON((needs.prepare.outputs.matrix) }}
     uses: ./.github/workflows/call_apply.yml
     with: 
       workspace: ${{matrix.workspace}}
