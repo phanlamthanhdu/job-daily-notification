@@ -15,4 +15,4 @@ jobs:
     runs-on: ubuntu-latest
     environment: ${{ inputs.workspace }}
     steps:
-      - run: echo ${{ vars.[inputs.tf_var] }}
+      - run: echo ${{ vars[inputs.tf_var] }}
