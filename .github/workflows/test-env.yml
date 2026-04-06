@@ -6,15 +6,17 @@ on:
 jobs:
   get_vars:
     runs-on: ubuntu-latest
-    output: 
-      
+    outputs: 
+      tf_var: ${{steps.get_tf_var.outputs.tf_var}}
     strategy:
       matrix:
         envs: [E1,E2,E3]
     environment: ${{matrix.envs}}
       
     steps:
-      echo "tf_var=${{matrix.VAR1}}" >> $GITHUB_OUTPUT
+      - id: get_tf_var
+        run: |
+          echo "tf_var=${{vars.VAR1}}" >> $GITHUB_OUTPUT
 
   # build-infra:
 
