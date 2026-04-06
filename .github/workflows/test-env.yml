@@ -11,7 +11,11 @@ jobs:
       
     steps:
       - id: get_matrix
+        shell: python
         run: |
+          import json
+          import os
+
           matrix = []
 
           envs = [dev, sit, prod]
