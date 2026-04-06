@@ -23,7 +23,7 @@ jobs:
 
           for e,v in zip(envs,tf_vars):
             matrix.append({
-              workspace: e
+              workspace: e,
               tf_config: v
             })
 
