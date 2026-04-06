@@ -4,24 +4,35 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-infra:
-    name: "Test"
-
+  get_vars:
+    runs-on: ubuntu-latest
+    output: 
+      
     strategy:
       matrix:
-        include:
-          - workspace: dev
-            tf_config: tf_dev
-          - workspace: sit
-            tf_config: tf_sit
-          - workspace: uat
-            tf_config: tf_uat
-          - workspace: prod
-            tf_config: tf_prod
+        envs: [E1,E2,E3]
+    environment: ${{matrix.envs}}
+      
+    steps:
+      echo "tf_var=${{matrix.VAR1}}" >> $GITHUB_OUTPUT
 
-    uses: ./.github/workflows/call_apply.yml
-    with: 
-      workspace: ${{ matrix.workspace }}
-    secrets:
-      env_vars: |
-        TF_CONFIG=${{matrix.tf_config}}
+  # build-infra:
+
+  #   strategy:
+  #     matrix:
+  #       include:
+  #         - workspace: dev
+  #           tf_config: tf_dev
+  #         - workspace: sit
+  #           tf_config: tf_sit
+  #         - workspace: uat
+  #           tf_config: tf_uat
+  #         - workspace: prod
+  #           tf_config: tf_prod
+
+  #   uses: ./.github/workflows/call_apply.yml
+  #   with: 
+  #     workspace: ${{ matrix.workspace }}
+  #   secrets:
+  #     env_vars: |
+  #       TF_CONFIG=${{matrix.tf_config}}
