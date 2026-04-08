@@ -16,4 +16,4 @@ jobs:
     steps:
       - run: |
           echo ${{inputs.app}}
-          echo ${secrets.env_vars}
+          echo ${{secrets.env_vars}}
