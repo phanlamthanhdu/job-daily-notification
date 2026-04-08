@@ -6,9 +6,14 @@ on:
       appname:
         type: string
         required: true
+    secrets:
+      env_vars:
+        required: true
 
 jobs:
   show_env:
     runs-on: ubuntu-latest
     steps:
-      - run: echo A
+      - run: |
+          echo ${{inputs.app}}
+          echo ${secrets.env_vars}

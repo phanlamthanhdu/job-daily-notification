@@ -5,9 +5,10 @@ on:
 
 jobs:
   build-infra:
-    strategy:
-      matrix:
-        envs: ["dev", "sit", "prod"]
-    uses: ./.github/workflows/call_apply.yml
+    uses: ./.github/workflows/call_plan.yml
     with: 
-      workspace: ${{matrix.envs}}
+      appname: ${{vars.HELLO}}
+    secrets:
+      env_vars: |
+        A=${{vars.HELLO}}
+        B=${{vars.WORLD}}
