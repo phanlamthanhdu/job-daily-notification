@@ -1,14 +1,14 @@
-name: Test environment
+# name: Test environment
 
-on:
-  workflow_dispatch:
+# on:
+#   workflow_dispatch:
 
-jobs:
-  build-infra:
-    uses: ./.github/workflows/call_plan.yml
-    with: 
-      appname: ${{vars.HELLO}}
-    secrets:
-      env_vars: |
-        A=${{vars.HELLO}}
-        B=${{vars.WORLD}}
+# jobs:
+#   build-infra:
+#     uses: ./.github/workflows/call_plan.yml
+#     with: 
+#       appname: ${{vars.HELLO}}
+#     secrets:
+#       env_vars: |
+#         A=${{vars.HELLO}}
+#         B=${{vars.WORLD}}
