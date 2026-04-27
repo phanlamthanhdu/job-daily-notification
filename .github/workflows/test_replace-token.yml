@@ -12,7 +12,7 @@ jobs:
       - name: Replace token
         uses: stephen-BT/replace-tokens@v1
         with:
-          files: '["./appsettings.json"]'
+          files: '["appsettings.json"]'
         env:
           APP_NAME: "Replaced"
           ENV: "Replaced"
