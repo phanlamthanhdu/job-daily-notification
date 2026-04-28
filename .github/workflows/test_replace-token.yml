@@ -10,7 +10,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Replace token
-        uses: stephen-BT/replace-tokens@v1
+        uses: TriDuongMinh/replace-tokens@v1.4
         with:
           files: '["appsettings.json"]'
         env:
