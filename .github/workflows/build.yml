@@ -1,7 +1,10 @@
 name: Build Dotnet
 on:
   workflow_dispatch:
-  
+  pull_request:
+    branches:
+      - main
+      
 jobs:
   build-app:
     runs-on: ubuntu-latest
@@ -19,10 +22,10 @@ jobs:
           dotnet-version: '8.0'
 
       - name: Build Dotnet
-        run: dotnet build -c Release
+        run: dotnet build github-actions-hw.sln -c Release
     
       - name: Publish Dotnet
-        run: dotnet publish -c Release -o ./publish_output
+        run: dotnet publish github-actions-hw.sln -c Release -o ./publish_output
 
       - name: Test command
         run: |
