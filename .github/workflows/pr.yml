@@ -16,3 +16,5 @@ jobs:
 
       - run: |
           ls Box
+          echo "========================"
+          cat Box/hw1.md
