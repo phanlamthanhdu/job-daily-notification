@@ -1,0 +1,21 @@
+name: Test matrix
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - test-matrix
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        envs: [DEV,SIT,PROD]
+    concurrency:
+      group: deploy-${{ matrix.envs }}-apps
+      cancel-in-progress: true
+
+    environment: ${{ matrix.envs }}
+    steps:
+      - run: echo "Hello World!"
