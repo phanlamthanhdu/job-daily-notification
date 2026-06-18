@@ -12,10 +12,10 @@ jobs:
     strategy:
       matrix:
         envs: [DEV,SIT,PROD]
-      max-parallel: 2
-    # concurrency:
-    #   group: deploy-${{ matrix.envs }}-apps
-    #   cancel-in-progress: true
+      max-parallel: 1
+    concurrency:
+      group: deploy-apps
+      cancel-in-progress: true
 
     environment: ${{ matrix.envs }}
     steps:
