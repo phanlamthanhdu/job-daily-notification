@@ -12,9 +12,10 @@ jobs:
     strategy:
       matrix:
         envs: [DEV,SIT,PROD]
-    concurrency:
-      group: deploy-${{ matrix.envs }}-apps
-      cancel-in-progress: true
+      
+    # concurrency:
+    #   group: deploy-${{ matrix.envs }}-apps
+    #   cancel-in-progress: true
 
     environment: ${{ matrix.envs }}
     steps:
