@@ -18,3 +18,13 @@ jobs:
           ls Box
           echo "========================"
           cat Box/hw1.md
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref:
+      
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
